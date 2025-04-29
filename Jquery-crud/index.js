@@ -8,13 +8,13 @@ $(document).ready(function () {
     courses.forEach((course, index) => {
       const row = `
         <tr class="border-b">
-          <td class="px-4 py-2">${index + 1}</td>
-          <td class="px-4 py-2">${course.name}</td>
-          <td class="px-4 py-2">${course.description}</td>
-          <td class="px-4 py-2 space-x-2">
-            <button class="edit-btn bg-yellow-500 hover:bg-yellow-600 text-white px-2 py-1 rounded" data-index="${index}">Edit</button>
-            <button class="delete-btn bg-red-500 hover:bg-red-600 text-white px-2 py-1 rounded" data-index="${index}">Delete</button>
-          </td>
+        <td class="px-4 py-2 border-b">${index + 1}</td>
+        <td class="px-4 py-2 border-b">${course.name}</td>
+        <td class="px-4 py-2 border-b">${course.description}</td>
+        <td class="px-4 py-2 border-b">
+          <button class="edit-btn text-blue-500 mr-2" data-index="${index}">Edit</button>
+          <button class="delete-btn text-red-500" data-index="${index}">Delete</button>
+        </td>
         </tr>`;
       tbody.append(row);
     });

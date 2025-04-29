@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title><%= title %></title>
+  <link rel="stylesheet" href="/css/output.css">
+</head>
+<body class="bg-gray-100 text-gray-900">
+
+  <header class="bg-white shadow p-4">
+    <h1 class="text-xl font-bold">My App</h1>
+  </header>
+
+  <main class="p-6">
+    <%- body %> <!-- This injects content from the page -->
+  </main>
+
+  <footer class="text-center p-4 text-sm bg-gray-200 mt-6">
+    &copy; <%= new Date().getFullYear() %> My App
+  </footer>
+
+</body>
+</html>
