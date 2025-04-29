@@ -6,13 +6,11 @@ const expressLayouts = require('express-ejs-layouts');
 const app = express();
 const port = process.env.PORT || 5000;
 
-
-app.set('layout', 'layout'); // default layout
-
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
-app.use(expressLayouts);
+app.set('layout', 'layout');
 
+app.use(expressLayouts);
 app.use(express.static('public'));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -22,5 +20,5 @@ app.get("/", (req, res) => {
 });
 
 app.listen(port, () => {
-	console.log(`server is running on ${port}`)
-})
+  console.log(`server is running on ${port}`);
+});

@@ -2,22 +2,18 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title><%= title %></title>
-  <link rel="stylesheet" href="/css/output.css">
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 </head>
-<body class="bg-gray-100 text-gray-900">
+<body class="mx-8">
+ <%- include('partials/header') %>
 
-  <header class="bg-white shadow p-4">
-    <h1 class="text-xl font-bold">My App</h1>
-  </header>
-
-  <main class="p-6">
-    <%- body %> <!-- This injects content from the page -->
+  <main class="">
+    <%- body %> <!-- This will render the content from the page (index.ejs) -->
   </main>
 
-  <footer class="text-center p-4 text-sm bg-gray-200 mt-6">
-    &copy; <%= new Date().getFullYear() %> My App
-  </footer>
+ <%- include('partials/footer') %>
 
 </body>
 </html>
