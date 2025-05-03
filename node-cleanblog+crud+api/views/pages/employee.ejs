@@ -1,3 +1,4 @@
+<% const isEdit = typeof employee !== 'undefined'; %>
 <nav class="py-5 mx-8 hidden lg:block">
     <div class="flex justify-between items-center">
       <p class="text-xl font-bold">Start Bootstrap</p>
@@ -22,8 +23,84 @@
       <li><a href="/employee" class="block py-2">Employee</a></li>
     </ul>
   </nav>
-<section>
-  <form action="">
-    
-  </form>
+
+  <section class="mt-4 mb-12">
+    <h2 class="text-center text-2xl font-bold mb-4">
+      <%= isEdit ? 'Edit Employee' : 'Add New Employee' %>
+    </h2>
+    <form 
+      action="<%= isEdit ? '/employee/edit/' + employee._id : '/employee/create' %>" 
+      method="POST" 
+      class="flex flex-col justify-center items-center gap-2"
+    >
+      <input 
+        type="text" 
+        class="p-2 w-md text-black border" 
+        placeholder="Name" 
+        name="name" 
+        value="<%= isEdit ? employee.name : '' %>"
+      />
+  
+      <select 
+        name="gender" 
+        class="p-2 w-md text-black border"
+      >
+        <option value="male" <%= isEdit && employee.gender === 'male' ? 'selected' : '' %>>Male</option>
+        <option value="female" <%= isEdit && employee.gender === 'female' ? 'selected' : '' %>>Female</option>
+      </select>
+  
+      <input 
+        type="text" 
+        class="p-2 w-md text-black border" 
+        placeholder="Address" 
+        name="address" 
+        value="<%= isEdit ? employee.address : '' %>"
+      />
+  
+      <input 
+        type="number" 
+        class="p-2 w-md text-black border" 
+        placeholder="Salary" 
+        name="salary" 
+        value="<%= isEdit ? employee.salary : '' %>"
+      />
+  
+      <button 
+        type="submit" 
+        class="bg-blue-600 text-white p-2 w-md"
+      >
+        <%= isEdit ? 'Update' : 'Submit' %>
+      </button>
+    </form>
+  </section>
+<section class="my-4 mx-8">
+  <table class="min-w-full border border-gray-200 shadow-sm rounded-lg overflow-hidden">
+    <thead class="bg-gray-100">
+      <tr>
+        <th class="px-4 py-2 text-left text-sm font-semibold text-gray-700">Id</th>
+        <th class="px-4 py-2 text-left text-sm font-semibold text-gray-700">Name</th>
+        <th class="px-4 py-2 text-left text-sm font-semibold text-gray-700">Gender</th>
+        <th class="px-4 py-2 text-left text-sm font-semibold text-gray-700">Address</th>
+        <th class="px-4 py-2 text-left text-sm font-semibold text-gray-700">Salary</th>
+        <th class="px-4 py-2 text-left text-sm font-semibold text-gray-700">Action</th>
+      </tr>
+    </thead>
+    <tbody class="divide-y divide-gray-200">
+      <% employees.forEach(function(emp) { %>
+        <tr class="hover:bg-gray-50 transition duration-150 ease-in-out">
+          <td class="px-4 py-2 text-sm text-gray-800"><%= emp.id %></td>
+          <td class="px-4 py-2 text-sm text-gray-800"><%= emp.name %></td>
+          <td class="px-4 py-2 text-sm text-gray-800"><%= emp.gender %></td>
+          <td class="px-4 py-2 text-sm text-gray-800"><%= emp.address %></td>
+          <td class="px-4 py-2 text-sm text-gray-800"><%= emp.salary %></td>
+          <td class="px-4 py-2 text-sm text-blue-600">
+            <a href="/employee/edit/<%= emp.id %>" class="hover:underline mr-2">Edit</a>
+            <a href="/employee/delete/<%= emp.id %>" onclick="return confirm('Are you sure?')" class="hover:underline text-red-500">Delete</a>
+          </td>
+        </tr>
+      <% }) %>
+    </tbody>
+  </table>
+  
+</section>
 </section>
