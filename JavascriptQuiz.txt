@@ -1,0 +1,10 @@
+1. 6 8
+2. is not a function
+3. 1 2 3
+4. sucess! oh noes! actually that worked
+5. 20 125.6
+6. colorchange is not a function
+7. getfullname is not a function
+8. false true true true
+9. lydia is 21 undefined
+10. .......
